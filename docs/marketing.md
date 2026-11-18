@@ -9,6 +9,9 @@ no telemetry, Windows 10/11.
 - Repo: https://github.com/harmless-beep/focusmap-desktop
 - Download / installer: https://github.com/harmless-beep/focusmap-desktop/releases/latest
 - Screenshots: `docs/today.png`, `docs/appolis.png`
+- Launch video (19s, made with `/brag`):
+  https://github.com/harmless-beep/focusmap-desktop/releases/download/v1.0.0/brag.mp4
+  — project and share copy in `brag-output/`.
 
 ---
 

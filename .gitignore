@@ -3,4 +3,5 @@
 *.ilk
 /Dist/
 /installer/output/
+.hyperframes/
 .DS_Store

@@ -1,0 +1,37 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; color: #F4F6FC; }
+    .shot-wrap { position: absolute; left: 160px; top: 170px; width: 1600px; height: 592px; }
+    .shot-wrap img { width: 100%; height: 100%; object-fit: contain; }
+    .cap-wrap { position: absolute; left: 164px; top: 820px; width: 1200px; height: 62px; }
+    .cap { font-size: 48px; font-weight: 800; letter-spacing: -0.03em; }
+    .cap em { font-style: normal; color: #22D3EE; }
+    .slider-wrap { position: absolute; left: 164px; top: 930px; width: 760px; height: 8px; }
+    .slider-track { position: absolute; inset: 0; background: #232C45; border-radius: 4px; }
+    .slider-mark { position: absolute; left: 0; top: 0; width: 86px; height: 8px; background: #8B5CF6; border-radius: 4px; }
+  </style>
+  <div id="root" data-composition-id="appolis" data-width="1920" data-height="1080">
+    <div id="appolis-shot-wrap" class="clip shot-wrap" data-start="0.1" data-duration="3.8" data-track-index="1">
+      <img id="appolis-shot" src="assets/appolis-city.png" />
+    </div>
+    <div id="appolis-cap-wrap" class="clip cap-wrap" data-start="1.05" data-duration="2.7" data-track-index="2">
+      <div id="appolis-cap" class="cap">Your apps become a <em>city.</em></div>
+    </div>
+    <div id="appolis-slider-wrap" class="clip slider-wrap" data-start="1.3" data-duration="2.3" data-track-index="3">
+      <div class="slider-track" data-layout-ignore></div>
+      <div id="appolis-mark" class="slider-mark" data-layout-ignore></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#appolis-shot",
+      { opacity: 0, x: -120, filter: "blur(10px)" },
+      { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.55, ease: "power4.out" }, 0.1);
+    tl.fromTo("#appolis-cap",
+      { opacity: 0, y: 16 },
+      { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 1.05);
+    tl.fromTo("#appolis-mark",
+      { width: 86 }, { width: 760, duration: 1.6, ease: "power2.inOut" }, 1.3);
+    window.__timelines["appolis"] = tl;
+  </script>
+</template>
