@@ -1,5 +1,7 @@
 # FocusMap
 
+![FocusMap](docs/focus.gif)
+
 **Strava for your PC — but the only thing it tracks is how you focus.**
 
 FocusMap is a small Windows app that watches *when* you're working, not *what*
