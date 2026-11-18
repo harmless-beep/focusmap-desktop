@@ -1,0 +1,6 @@
+/target/
+*.pdb
+*.ilk
+/Dist/
+/installer/output/
+.DS_Store

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*"
+           Name="FocusMap"
+           Language="1033"
+           Version="1.0.0.0"
+           Manufacturer="FocusMap"
+           UpgradeCode="359dda15-08d4-41c3-9c87-3486c52e067d">
+
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+    <MajorUpgrade DowngradeErrorMessage="A newer version of FocusMap is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Feature Id="Main" Title="FocusMap" Level="1">
+      <ComponentGroupRef Id="Files" />
+      <ComponentRef Id="StartMenuShortcut" />
+      <ComponentRef Id="DesktopShortcut" />
+    </Feature>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="FocusMap" />
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ShortcutFolder" Name="FocusMap" />
+      </Directory>
+      <Directory Id="DesktopFolder" />
+    </Directory>
+
+    <ComponentGroup Id="Files" Directory="INSTALLFOLDER">
+      <Component Id="FocusMapExecutable" Guid="9d61a8f9-2031-47cc-ba29-c5cc9afae158">
+        <File Id="FocusMapExe"
+              Name="FocusMap.exe"
+              Source="$(var.SourceExe)"
+              KeyPath="yes" />
+      </Component>
+    </ComponentGroup>
+
+      <Component Id="StartMenuShortcut" Directory="ShortcutFolder" Guid="81ff8daa-6ce6-44da-98b9-96f05e7873b0">
+        <Shortcut Id="StartMenuFocusMap"
+                  Name="FocusMap"
+                  Description="A private, local focus map for your PC"
+                  Target="[INSTALLFOLDER]FocusMap.exe"
+                  WorkingDirectory="INSTALLFOLDER" />
+        <RemoveFolder Id="RemoveFocusMapMenu" On="uninstall" />
+        <RemoveFolder Id="RemoveInstallFolder" Directory="INSTALLFOLDER" On="uninstall" />
+        <RegistryValue Root="HKCU"
+                       Key="Software\FocusMap"
+                       Name="StartMenuShortcut"
+                       Type="integer"
+                       Value="1"
+                       KeyPath="yes" />
+      </Component>
+
+      <Component Id="DesktopShortcut" Directory="DesktopFolder" Guid="f6967953-b68b-4cac-8d93-f9a6930c2ac8">
+        <Shortcut Id="DesktopFocusMap"
+                  Name="FocusMap"
+                  Description="A private, local focus map for your PC"
+                  Target="[INSTALLFOLDER]FocusMap.exe"
+                  WorkingDirectory="INSTALLFOLDER" />
+        <RegistryValue Root="HKCU"
+                       Key="Software\FocusMap"
+                       Name="DesktopShortcut"
+                       Type="integer"
+                       Value="1"
+                       KeyPath="yes" />
+      </Component>
+  </Product>
+</Wix>
